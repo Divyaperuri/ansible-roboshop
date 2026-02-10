@@ -2,13 +2,13 @@
   hosts: local
   connection: local
   vars:
-    ami_id: 
-    sg_id:
-    zone_id: 
+    ami_id: ami-0220d79f3f480ecf5
+    sg_id: sg-0707ca13336ec1a61
+    zone_id: Z03009212LOQ4VPB2FLS3
     DOMAIN_NAME: "devopslearn.shop"
     instance:
     - mongodb
-    - catalogue
+    - redis
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
