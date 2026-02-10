@@ -57,7 +57,7 @@
   - name: create route53 record for frontend
     amazon.aws.route53:
       state: present
-      zone: "{{ domanin_name }}"
+      zone: "{{ domain_name }}"
       record: "{{ domain_name }}" #devopslearn.shop
       type: A
       ttl: 1
