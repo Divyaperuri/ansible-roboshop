@@ -49,4 +49,5 @@
       name: nginx
       state: started
       enabled: yes
+      restart: yes
       
