@@ -7,10 +7,14 @@
     zone_id: Z03009212LOQ4VPB2FLS3
     domain_name: "devopslearn.shop"
     instances:
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
+    # - mongodb
+    # - redis
+    # - mysql
+    # - rabbitmq
+    - catalogue
+    - cart
+    - user
+    
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
