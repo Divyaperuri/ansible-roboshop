@@ -49,7 +49,7 @@
       record: "{{ item.item }}.{{ domain_name }}" #mongodb.devopslearn.shop
       type: A 
       ttl: 1
-      value: "{{ item.instance[0].private_ip_address }}"
+      value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
 
@@ -61,7 +61,7 @@
       record: "{{ domain_name }}" #devopslearn.shop
       type: A
       ttl: 1
-      value: "{{ item.instance[0].public_ip_address }}"
+      value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
     when: item.item == "frontend"
     loop: "{{ ec2_output.results }}"
