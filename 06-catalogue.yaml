@@ -73,6 +73,7 @@
 
   - name: evaluate catalogue databases
     community.mongodb.mongodb_shell:
+      login_host: mongodb.devopslearn.shop
       eval: db.getMongo().getDBNames().indexOf('catalogue')
     register: catalogue_output
 
