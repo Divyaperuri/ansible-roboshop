@@ -6,7 +6,7 @@
     sg_id: sg-0707ca13336ec1a61
     zone_id: Z03009212LOQ4VPB2FLS3
     domain_name: "devopslearn.shop"
-    instance:
+    instances:
     - mongodb
     - redis
     - mysql
@@ -15,12 +15,12 @@
   - name: create ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
-      instance_type: t3.micro
+      instance_type: "t3.micro"
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
       tags:
         Name: "{{ item }}" 
-    loop: "{{ instance }}"
+    loop: "{{ instances }}"
     register: ec2_output
 
   - name: print the ec2_output
