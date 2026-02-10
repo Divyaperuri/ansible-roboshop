@@ -39,7 +39,7 @@
   - name: dowload the user application
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip 
-      path: /tmp/user.zip
+      dest: /tmp/user.zip
 
   - name: extract the user application
     ansible.builtin.unarchive:
