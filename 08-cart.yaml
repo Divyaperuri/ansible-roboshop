@@ -34,7 +34,7 @@
   - name: download the user application
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
-      path: /tmp/cart.zip
+      dest: /tmp/cart.zip
 
   - name: extract the user application
     ansible.builtin.unarchive:
