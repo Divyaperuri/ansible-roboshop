@@ -31,12 +31,12 @@
       path: /app
       state: directory
 
-  - name: download the user application
+  - name: download the cart application
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
       dest: /tmp/cart.zip
 
-  - name: extract the user application
+  - name: extract the cart application
     ansible.builtin.unarchive:
       src: /tmp/cart.zip
       dest: /app
@@ -47,11 +47,11 @@
       path: /app
 
   - name: copy the cart service file
-    ansible.builtin.user:
+    ansible.builtin.copy:
       src: cart.service
       dest: /etc/systemd/system/cart.service
   
-  - name: Daemon reload enable and start the user
+  - name: Daemon reload enable and start the cart
     ansible.builtin.service:
       name: cart
       state: started
