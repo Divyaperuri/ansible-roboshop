@@ -68,17 +68,22 @@
       state: present
 
   - name: connect to mongodb catalogue
-    ansible.builtin.command:  mongosh mongodb.devopslearn.shop --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+    ansible.builtin.command:  mongosh mongodb.devopslearn.shop --quiet --eval "db.getMongo().getDBName().indexOf('catalogue')"
     register: catalogue_output
 
-  - name: load products into mongodb
-    ansible.builtin.shell: mongosh --host mongodb.devopslearn.shop </app/db/master-data.js
-    when: catalogue_output.stdout | int < 0
+  - name: connect to mongodb catalogue
+    ansible.builtin.debug:
+      msg: "{{ catalogue_output }}"
+
+
+  # - name: load products into mongodb
+  #   ansible.builtin.shell: mongosh --host mongodb.devopslearn.shop </app/db/master-data.js
+  #   when: catalogue_output.stdout | int < 0
 
   
-  - name: Start and Enable the catalogue
-    ansible.builtin.systemd_service:
-      name: catalogue
-      state: started
-      enabled: true
-      daemon-reload: true
+  # - name: Start and Enable the catalogue
+  #   ansible.builtin.systemd_service:
+  #     name: catalogue
+  #     state: started
+  #     enabled: true
+  #     daemon-reload: true
