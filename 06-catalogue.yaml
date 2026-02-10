@@ -67,19 +67,19 @@
       name: mongodb-mongosh
       state: present
 
-  # - name: connect to mongodb catalogue
-  #   ansible.builtin.command:  mongosh mongodb.devopslearn.shop --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
-  #   register: catalogue_output
-
-  - name: evaluate catalogue databases
-    community.mongodb.mongodb_shell:
-      login_host: mongodb.devopslearn.shop
-      eval: db.getMongo().getDBNames().indexOf('catalogue')
+  - name: connect to mongodb catalogue
+    ansible.builtin.command:  mongosh mongodb.devopslearn.shop --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
 
-  - name: print catalogue
-    ansible.builtin.debug:
-      msg: "{{ catalogue_output }}"
+  # - name: evaluate catalogue databases
+  #   community.mongodb.mongodb_shell:
+  #     login_host: mongodb.devopslearn.shop
+  #     eval: db.getMongo().getDBNames().indexOf('catalogue')
+  #   register: catalogue_output
+
+  # - name: print catalogue
+  #   ansible.builtin.debug:
+  #     msg: "{{ catalogue_output }}"
 
 
   # - name: load products into mongodb
