@@ -82,9 +82,9 @@
   #     msg: "{{ catalogue_output }}"
 
 
-  # - name: load products into mongodb
-  #   ansible.builtin.shell: mongosh --host mongodb.devopslearn.shop </app/db/master-data.js
-  #   when: catalogue_output.stdout | int < 0
+  - name: load products into mongodb
+    ansible.builtin.shell: mongosh --host mongodb.devopslearn.shop </app/db/master-data.js
+    when: catalogue_output.stdout | int < 0
 
   
   # - name: Start and Enable the catalogue
