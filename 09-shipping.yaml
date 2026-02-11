@@ -62,7 +62,7 @@
     args:
       chdir: /app #change directory and move the file
 
-  - name: copy shipping service
+  - name: copy the shipping service file
     ansible.builtin.copy:
       src: shipping.service
       dest: /etc/systemd/system/shipping.service
@@ -81,7 +81,7 @@
     - /app/db/master-data.sql
 
   - name: daemon reload enable and start the shipping
-    ansible.builtin.systemd_service:
+    ansible.builtin.service:
       name: shipping
       enabled: true
       state: started
