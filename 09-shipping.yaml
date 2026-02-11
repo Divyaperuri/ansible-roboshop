@@ -63,7 +63,7 @@
       chdir: /app #change directory and move the file
 
   - name: copy the shipping service file
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: shipping.service
       dest: /etc/systemd/system/shipping.service
 
