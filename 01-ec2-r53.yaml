@@ -8,7 +8,7 @@
     domain_name: "devopslearn.shop"
     instances:
     - mongodb
-    - redis
+    # - redis
     # - mysql
     # - rabbitmq
     # - catalogue
@@ -43,10 +43,10 @@
       var: ec2_termination_status
  
     
-      tags:
-        Name: "{{ item }}" 
-    loop: "{{ instances }}"
-    register: ec2_output
+    #   tags:
+    #     Name: "{{ item }}" 
+    # loop: "{{ instances }}"
+    # register: ec2_output
 
   # - name: print the ec2_output
   #   ansible.builtin.debug:
