@@ -28,7 +28,7 @@
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
       tags:
-        Name: "{{ item }}" 
+        Name: "mongodb" 
         loop: "{{ instances }}"
       register: ec2_termination_status
   - name: Dispaly termination status
