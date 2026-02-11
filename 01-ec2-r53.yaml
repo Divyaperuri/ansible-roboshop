@@ -7,34 +7,28 @@
     zone_id: Z03009212LOQ4VPB2FLS3
     domain_name: "devopslearn.shop"
     instances:
-    - mongodb
+    # - mongodb
     # - redis
-    # - mysql
-    # - rabbitmq
-    # - catalogue
-    # - cart
-    # - user
-    # - shipping
-    # - payment
-    # - frontend
+    - mysql
+    - rabbitmq
+    - catalogue
+    - cart
+    - user
+    - shipping
+    - payment
+    - frontend
 
   tasks:
-  - name: terminate ec2 instance
+  - name: create ec2 instance
     amazon.aws.ec2_instance:
-      # name: "{{ item }}"
-      state: absent
-      region: us-east-1a
+      name: "{{ item }}"
       instance_type: "t3.micro"
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
       tags:
-        Name: "mongodb" 
-        loop: "{{ instances }}"
-      register: ec2_termination_status
-  - name: Dispaly termination status
-    ansible.builtin.debug:
+        Name: "{{ item }}" 
     loop: "{{ instances }}"
- 
+    register: ec2_output
 
   # tasks:
   # - name: terminate ec2 instance
@@ -54,9 +48,9 @@
     # loop: "{{ instances }}"
     # register: ec2_output
 
-  # - name: print the ec2_output
-  #   ansible.builtin.debug:
-  #     msg: "{{ ec2_output }}"
+  - name: print the ec2_output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
 
   # - name: print public_ip
   #   ansible.builtin.debug: 
