@@ -18,29 +18,35 @@
     # - payment
     # - frontend
 
-  # tasks:
-  # - name: create ec2 instance
-  #   amazon.aws.ec2_instance:
-  #     name: "{{ item }}"
-  #     instance_type: "t3.micro"
-  #     security_group: "{{ sg_id }}"
-  #     image_id: "{{ ami_id }}"
-  #     tags:
-  #       Name: "{{ item }}" 
-  #   loop: "{{ instances }}"
-  #   register: ec2_output
-
   tasks:
   - name: terminate ec2 instance
     amazon.aws.ec2_instance:
+      name: "{{ item }}"
       state: absent
-      region: us-east-1
-      filters:
-        "tag:Name": "mongodb"
+      region: us-east-1a
+      instance_type: "t3.micro"
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      tags:
+        Name: "{{ item }}" 
+        loop: "{{ instances }}"
       register: ec2_termination_status
-  - name: Display termination status
+  - name: Dispaly termination status
     ansible.builtin.debug:
-      var: ec2_termination_status
+    loop: "{{ instances }}"
+ 
+
+  # tasks:
+  # - name: terminate ec2 instance
+  #   amazon.aws.ec2_instance:
+  #     state: absent
+  #     region: us-east-1
+  #     filters:
+  #       "tag:Name": "mongodb"
+  #     register: ec2_termination_status
+  # - name: Display termination status
+  #   ansible.builtin.debug:
+  #     var: ec2_termination_status
  
     
     #   tags:
