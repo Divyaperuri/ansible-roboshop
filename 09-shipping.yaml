@@ -72,7 +72,7 @@
       state: import
       name: all
       login_host: "{{ MYSQL_HOST }}"
-      login_user: roboshop
+      login_user: root
       login_password: RoboShop@1
       target: "{{ item }}"
     loop:
