@@ -60,8 +60,8 @@
       dest: /etc/systemd/system/payment.servicel
 
   - name: daemon reload enable and start
-    ansible.builtin.service:
-      name: shipping
+    ansible.builtin.systemd_service:
+      name: payment
       enabled: true
       state: started
       daemon_reload: true
