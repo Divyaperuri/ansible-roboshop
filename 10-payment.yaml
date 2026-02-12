@@ -40,9 +40,9 @@
       url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
       dest: /tmp/payment.zip
 
-  - name: extract shipping application
+  - name: extract payment application
     ansible.builtin.unarchive:
-      src: /tmp/shipping.zip
+      src: /tmp/payment.zip
       dest: /app
       remote_src: yes
 
