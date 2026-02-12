@@ -62,10 +62,10 @@
     args:
       chdir: /app
 
-  - name: copy shipping service
+  - name: copy payment service
     ansible.builtin.copy:
-      src: shipping.service
-      dest: /etc/systemd/system/shipping.service
+      src: payment.service
+      dest: /etc/systemd/system/payment.service
 
   - name: import shipping data into mysql
     community.mysql.mysql_db:
